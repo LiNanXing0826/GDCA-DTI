@@ -1,0 +1,36 @@
+# ============================================================
+# GDCA-DTI: Geometry-Guided Directional Cross-Modal Attention
+# Requirements (versions verified on the development environment)
+# Python 3.10 / CUDA 11.8
+# ============================================================
+
+# ---------- Core (required for training & inference) ----------
+# NOTE: torch must match your CUDA version. This project used:
+#   pip install torch==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+torch==2.3.1
+numpy==1.26.4
+pandas==2.3.2
+scikit-learn==1.6.1
+scipy==1.13.1
+tqdm==4.67.1
+rdkit==2025.3.6
+requests>=2.31.0   # docking/download_protein.py, dataset download scripts
+
+# ---------- Plotting (robustness / structural-missingness / case-study figures) ----------
+matplotlib==3.9.4
+seaborn>=0.13.0
+openpyxl==3.1.5      # pd.read_excel for the analysis workbooks
+
+# ---------- Optional: protein embedding generation ----------
+# ESM-2 residue embeddings are pre-computed and shipped as .pkl feature
+# files, so the training pipeline does NOT import these at runtime.
+# Install them only if you need to regenerate embeddings from FASTA:
+# fair-esm==2.0.0
+# transformers==4.51.3
+
+# ---------- Optional: docking validation pipeline ----------
+# The docking/ scripts orchestrate external binaries (AutoDock Vina,
+# PyMOL) rather than Python packages. Install separately:
+#   - AutoDock Vina >= 1.2   (binary)
+#   - PyMOL >= 2.5           (binary or conda package)
+# biopython==1.85    # only if you regenerate protein structures/PDB parsing
